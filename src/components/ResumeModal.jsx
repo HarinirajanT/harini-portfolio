@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -12,8 +12,9 @@ pdfjs.GlobalWorkerOptions.workerSrc = new URL(
 const resumeUrl = `${import.meta.env.BASE_URL}harini-resume.pdf`;
 
 export default function ResumeModal({ open, onClose }) {
+  const viewerRef = useRef(null);
   const [numPages, setNumPages] = useState(null);
-  const [pageWidth, setPageWidth] = useState(800);
+  const [pageWidth, setPageWidth] = useState(900);
 
   useEffect(() => {
     if (!open) return;
@@ -28,12 +29,25 @@ export default function ResumeModal({ open, onClose }) {
 
   useEffect(() => {
     if (!open) return undefined;
+
     const updateWidth = () => {
-      setPageWidth(Math.min(860, window.innerWidth - 48));
+      if (!viewerRef.current) return;
+      const { clientWidth, clientHeight } = viewerRef.current;
+      const horizontal = clientWidth - 8;
+      const vertical = clientHeight - 8;
+      const widthFromHeight = vertical / 1.414;
+      setPageWidth(Math.max(360, Math.min(horizontal, widthFromHeight, 1600)));
     };
+
     updateWidth();
+    const observer = new ResizeObserver(updateWidth);
+    if (viewerRef.current) observer.observe(viewerRef.current);
     window.addEventListener('resize', updateWidth);
-    return () => window.removeEventListener('resize', updateWidth);
+
+    return () => {
+      observer.disconnect();
+      window.removeEventListener('resize', updateWidth);
+    };
   }, [open]);
 
   if (!open) return null;
@@ -56,14 +70,6 @@ export default function ResumeModal({ open, onClose }) {
           <div className="resume-modal-actions">
             <a
               href={resumeUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-ghost btn-sm"
-            >
-              Open PDF
-            </a>
-            <a
-              href={resumeUrl}
               download="Harini_T_Resume.pdf"
               className="btn btn-ghost btn-sm"
             >
@@ -75,7 +81,7 @@ export default function ResumeModal({ open, onClose }) {
           </div>
         </div>
 
-        <div className="resume-viewer">
+        <div className="resume-viewer" ref={viewerRef}>
           <Document
             file={resumeUrl}
             onLoadSuccess={({ numPages: pages }) => setNumPages(pages)}
@@ -83,8 +89,8 @@ export default function ResumeModal({ open, onClose }) {
             error={
               <div className="resume-error">
                 <p>Could not load the PDF in this browser.</p>
-                <a href={resumeUrl} target="_blank" rel="noopener noreferrer" className="btn btn-primary">
-                  Open resume PDF
+                <a href={resumeUrl} download="Harini_T_Resume.pdf" className="btn btn-primary">
+                  Download resume
                 </a>
               </div>
             }
@@ -94,6 +100,8 @@ export default function ResumeModal({ open, onClose }) {
                 key={`page-${index + 1}`}
                 pageNumber={index + 1}
                 width={pageWidth}
+                renderTextLayer={false}
+                renderAnnotationLayer={false}
                 className="resume-page"
               />
             ))}
