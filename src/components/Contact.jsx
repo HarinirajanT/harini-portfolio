@@ -33,9 +33,9 @@ export default function Contact() {
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        Have an idea?
+        Open to new opportunities
         <br />
-        <span>Let&apos;s build it together.</span>
+        <span>Let&apos;s connect.</span>
       </motion.h2>
 
       <ContactForm />

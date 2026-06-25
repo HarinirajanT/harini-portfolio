@@ -76,7 +76,8 @@ export default function ContactForm() {
         <p className="contact-form-eyebrow">Send a message</p>
         <h3 className="contact-form-title">Get in touch</h3>
         <p className="contact-form-sub">
-          Have a project, internship, or collaboration in mind? Drop a message and I&apos;ll get back to you.
+          Open to full-time and internship roles in Applied AI, full-stack development, and automation.
+          Recruiters and hiring managers — send a message and I&apos;ll get back to you within 24–48 hours.
         </p>
 
         <form className="contact-form" onSubmit={handleSubmit}>
@@ -116,7 +117,7 @@ export default function ContactForm() {
               name="message"
               value={form.message}
               onChange={handleChange}
-              placeholder="Tell me about your idea, role, or opportunity..."
+              placeholder="Tell me about the role, team, or opportunity..."
               rows={5}
               required
               minLength={10}
