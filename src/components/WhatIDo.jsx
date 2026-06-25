@@ -13,7 +13,7 @@ export default function WhatIDo() {
         What I Do
       </motion.p>
       <h2 className="section-headline">What I Do</h2>
-      <div className="card-grid">
+      <div className="card-grid card-grid-four">
         {whatIDo.map((item, i) => (
           <motion.article
             key={item.title}

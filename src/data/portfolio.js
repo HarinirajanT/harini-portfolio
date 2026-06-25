@@ -58,6 +58,17 @@ export const whatIDo = [
       'Solution delivery',
     ],
   },
+  {
+    title: 'Analytics Dashboards & API Automation',
+    description:
+      'Building data dashboards with JSON and SQL—tables, pie charts, bar charts, and more. Customizing products through schema updates and Postman API calls, and automating customer workflows with webhooks and event-driven integrations.',
+    highlights: [
+      'JSON & SQL dashboards',
+      'Tables, pie & bar charts',
+      'Product customization via Postman',
+      'Webhooks & API automation',
+    ],
+  },
 ];
 
 export const internships = [
