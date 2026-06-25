@@ -486,34 +486,120 @@ body {
 /* Resume modal */
 .resume-overlay {
   align-items: center;
-  padding: 0.75rem;
+  padding: 2.5vh 2.5vw;
 }
 
 .resume-modal {
-  width: min(98vw, 1400px);
-  height: 96vh;
-  max-height: 96vh;
+  width: 95vw;
+  max-width: 1200px;
+  height: 95vh;
+  max-height: 95vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 0;
 }
 
+.modal-panel.resume-modal {
+  max-width: 1200px;
+}
+
 .resume-modal-header {
+  position: sticky;
+  top: 0;
+  z-index: 2;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0.85rem 1.25rem;
+  gap: 1rem;
+  padding: 0.9rem 1.25rem;
   border-bottom: 1px solid var(--glass-border);
+  background: rgba(15, 23, 42, 0.96);
+  backdrop-filter: blur(12px);
   flex-shrink: 0;
 }
 
-.resume-modal-header h2 { font-size: 1.1rem; font-weight: 600; }
+.resume-header-left {
+  display: flex;
+  align-items: baseline;
+  gap: 0.85rem;
+  min-width: 0;
+}
+
+.resume-modal-header h2 {
+  font-size: 1.05rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.resume-page-indicator {
+  font-size: 0.82rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
 
 .resume-modal-actions {
   display: flex;
   align-items: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.resume-zoom-controls,
+.resume-page-controls {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.15rem;
+  border: 1px solid var(--glass-border);
+  border-radius: 10px;
+  background: rgba(2, 6, 23, 0.45);
+}
+
+.resume-icon-btn {
+  width: 2rem;
+  height: 2rem;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--text);
+  font-size: 1.1rem;
+  line-height: 1;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+
+.resume-icon-btn:hover:not(:disabled) {
+  background: rgba(139, 92, 246, 0.2);
+  color: var(--purple-light);
+}
+
+.resume-icon-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+}
+
+.resume-zoom-label {
+  min-width: 3.25rem;
+  padding: 0 0.35rem;
+  border: none;
+  background: transparent;
+  color: var(--text-muted);
+  font-size: 0.78rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.resume-zoom-label:hover {
+  color: var(--text);
+}
+
+.resume-close {
+  position: static;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 8px;
 }
 
 .btn-sm {
@@ -525,8 +611,8 @@ body {
   flex: 1;
   min-height: 0;
   overflow: auto;
-  background: #cbd5e1;
-  padding: 0.35rem;
+  background: #94a3b8;
+  padding: 1.5rem;
   display: flex;
   justify-content: center;
   align-items: flex-start;
@@ -534,22 +620,15 @@ body {
 
 .resume-viewer .react-pdf__Document {
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.75rem;
+  justify-content: center;
   width: 100%;
 }
 
 .resume-page {
-  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.28);
-  border-radius: 2px;
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.35);
+  border-radius: 4px;
   overflow: hidden;
-}
-
-.resume-page canvas {
-  display: block;
-  width: 100% !important;
-  height: auto !important;
+  background: #fff;
 }
 
 .resume-loading,
@@ -564,6 +643,32 @@ body {
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+}
+
+@media (max-width: 768px) {
+  .resume-overlay {
+    padding: 0;
+  }
+
+  .resume-modal {
+    width: 100vw;
+    height: 100vh;
+    max-height: 100vh;
+    border-radius: 0;
+  }
+
+  .resume-modal-header {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .resume-modal-actions {
+    justify-content: space-between;
+  }
+
+  .resume-viewer {
+    padding: 1rem;
+  }
 }
 
 .section-subline {
