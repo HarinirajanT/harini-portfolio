@@ -888,6 +888,40 @@ body {
   line-height: 1.5;
 }
 
+/* Core strengths */
+.strengths-panel {
+  padding: 2rem 2.25rem;
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+}
+
+.strengths-list {
+  list-style: none;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.65rem;
+  justify-content: center;
+}
+
+.strengths-list li {
+  font-size: 0.88rem;
+  font-weight: 500;
+  padding: 0.55rem 1rem;
+  border-radius: 999px;
+  background: rgba(124, 58, 237, 0.12);
+  color: var(--purple-light);
+  border: 1px solid rgba(139, 92, 246, 0.25);
+  transition: border-color 0.2s, box-shadow 0.2s, transform 0.2s;
+}
+
+.strengths-list li:hover {
+  border-color: rgba(139, 92, 246, 0.5);
+  box-shadow: 0 4px 20px rgba(124, 58, 237, 0.15);
+  transform: translateY(-2px);
+}
+
 /* Highlights */
 .highlights-grid {
   display: grid;

@@ -6,6 +6,7 @@ import WhatIDo from './components/WhatIDo';
 import Projects from './components/Projects';
 import WhereILearned from './components/WhereILearned';
 import Toolbox from './components/Toolbox';
+import CoreStrengths from './components/CoreStrengths';
 import Highlights from './components/Highlights';
 import Contact from './components/Contact';
 import useCommandMenu from './hooks/useCommandMenu';
@@ -26,6 +27,7 @@ export default function App() {
       <Projects />
       <WhereILearned />
       <Toolbox />
+      <CoreStrengths />
       <Highlights />
       <Contact />
     </>

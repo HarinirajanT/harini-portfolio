@@ -130,6 +130,19 @@ export const toolbox = [
   { category: 'Tools', items: ['Git', 'GitHub', 'Docker', 'Postman', 'AWS'] },
 ];
 
+export const coreStrengths = [
+  'Communication',
+  'Collaboration',
+  'Customer Focus',
+  'Problem Solving',
+  'Root Cause Analysis',
+  'Time Management',
+  'Ownership',
+  'Adaptability',
+  'Product Thinking',
+  'Continuous Learning',
+];
+
 export const highlights = [
   { icon: '🎓', text: 'Computer Science Engineer' },
   { icon: '💼', text: '3 Industry Internships' },
@@ -150,6 +163,7 @@ export const commandItems = [
   { id: 'projects', label: 'Projects', section: 'projects', keywords: ['projects', 'build', 'github'] },
   { id: 'learned', label: "Where I've Learned", section: 'learned', keywords: ['internship', 'devrev'] },
   { id: 'toolbox', label: 'My Toolbox', section: 'toolbox', keywords: ['skills', 'stack'] },
+  { id: 'strengths', label: 'Core Strengths', section: 'strengths', keywords: ['soft skills', 'growth', 'communication'] },
   { id: 'highlights', label: 'Highlights', section: 'highlights', keywords: ['achievements'] },
   { id: 'contact', label: 'Contact', section: 'contact', keywords: ['contact', 'email'] },
 ];
