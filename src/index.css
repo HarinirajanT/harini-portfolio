@@ -487,8 +487,8 @@ body {
 .resume-overlay { align-items: flex-start; padding-top: 4vh; }
 
 .resume-modal {
-  max-width: 720px;
-  max-height: 88vh;
+  width: min(920px, 94vw);
+  max-height: 90vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -505,40 +505,29 @@ body {
 
 .resume-modal-header h2 { font-size: 1.1rem; font-weight: 600; }
 
-.resume-body {
-  overflow-y: auto;
-  padding: 1.5rem;
+.resume-modal-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
 }
 
-.resume-top { margin-bottom: 1.5rem; }
-.resume-top h1 { font-size: 1.5rem; margin-bottom: 0.35rem; }
-.resume-top p { font-size: 0.88rem; color: var(--text-muted); }
-.resume-links a { color: var(--purple-light); }
-
-.resume-body section { margin-bottom: 1.5rem; }
-
-.resume-body h3 {
-  font-size: 0.75rem;
-  text-transform: uppercase;
-  letter-spacing: 0.1em;
-  color: var(--purple-light);
-  margin-bottom: 0.65rem;
+.btn-sm {
+  padding: 0.45rem 0.9rem;
+  font-size: 0.82rem;
 }
 
-.resume-bold { font-weight: 600; font-size: 0.92rem; }
-.resume-muted { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 0.35rem; }
-
-.resume-block { margin-bottom: 1rem; }
-
-.resume-body ul {
-  padding-left: 1.1rem;
-  color: var(--text-muted);
-  font-size: 0.88rem;
+.resume-viewer {
+  flex: 1;
+  min-height: 0;
+  background: #0f172a;
 }
 
-.resume-body li { margin-bottom: 0.3rem; }
-
-.resume-skills { list-style: disc; }
+.resume-pdf {
+  width: 100%;
+  height: calc(90vh - 4.5rem);
+  border: 0;
+  display: block;
+}
 
 .section-subline {
   color: var(--text-muted);
