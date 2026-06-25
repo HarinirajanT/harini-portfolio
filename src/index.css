@@ -489,19 +489,29 @@ body {
   padding: 2.5vh 2.5vw;
 }
 
+.resume-overlay.modal-overlay {
+  padding: 2.5vh 2.5vw;
+}
+
 .resume-modal {
-  width: 95vw;
-  max-width: 1200px;
+  position: relative;
+  width: 95vw !important;
+  max-width: 1200px !important;
   height: 95vh;
   max-height: 95vh;
   overflow: hidden;
   display: flex;
   flex-direction: column;
   padding: 0;
+  background: var(--bg-mid);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
 }
 
 .modal-panel.resume-modal {
-  max-width: 1200px;
+  max-width: 1200px !important;
+  width: 95vw !important;
+  padding: 0;
 }
 
 .resume-modal-header {

@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { motion } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
@@ -18,7 +18,10 @@ export default function ResumeModal({ open, onClose }) {
   const viewerRef = useRef(null);
   const [numPages, setNumPages] = useState(null);
   const [pageNumber, setPageNumber] = useState(1);
-  const [containerWidth, setContainerWidth] = useState(900);
+  const [containerWidth, setContainerWidth] = useState(() => {
+    if (typeof window === 'undefined') return 1000;
+    return Math.max(600, Math.min(window.innerWidth * 0.95, 1200) - 48);
+  });
   const [zoom, setZoom] = useState(1);
 
   useEffect(() => {
@@ -40,22 +43,22 @@ export default function ResumeModal({ open, onClose }) {
     }
   }, [open]);
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     if (!open) return undefined;
 
     const updateWidth = () => {
-      if (!viewerRef.current) return;
-      const width = viewerRef.current.clientWidth - 48;
-      setContainerWidth(Math.max(320, width));
+      const viewportWidth = window.innerWidth;
+      const modalWidth = Math.min(viewportWidth * 0.95, 1200);
+      const contentWidth = modalWidth - 48;
+      setContainerWidth(Math.max(600, contentWidth));
     };
 
     updateWidth();
-    const observer = new ResizeObserver(updateWidth);
-    if (viewerRef.current) observer.observe(viewerRef.current);
+    const timer = window.setTimeout(updateWidth, 100);
     window.addEventListener('resize', updateWidth);
 
     return () => {
-      observer.disconnect();
+      window.clearTimeout(timer);
       window.removeEventListener('resize', updateWidth);
     };
   }, [open]);
@@ -90,7 +93,8 @@ export default function ResumeModal({ open, onClose }) {
       onClick={onClose}
     >
       <motion.div
-        className="modal-panel resume-modal"
+        className="resume-modal"
+        style={{ width: '95vw', maxWidth: 1200, height: '95vh' }}
         initial={{ opacity: 0, scale: 0.98, y: 12 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         transition={{ duration: 0.25 }}
