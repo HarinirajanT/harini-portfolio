@@ -987,6 +987,129 @@ body {
   background-clip: text;
 }
 
+.contact-form-wrap {
+  width: 100%;
+  max-width: 640px;
+  margin-bottom: 2.5rem;
+}
+
+.contact-form-panel {
+  padding: 2rem;
+  background: var(--glass);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--glass-border);
+  border-radius: 20px;
+  text-align: left;
+}
+
+.contact-form-eyebrow {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--purple-light);
+  margin-bottom: 0.5rem;
+}
+
+.contact-form-title {
+  font-size: 1.35rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+
+.contact-form-sub {
+  color: var(--text-muted);
+  font-size: 0.92rem;
+  line-height: 1.6;
+  margin-bottom: 1.5rem;
+}
+
+.contact-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.contact-honeypot {
+  display: none;
+}
+
+.contact-form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+@media (max-width: 640px) {
+  .contact-form-row { grid-template-columns: 1fr; }
+}
+
+.contact-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.contact-field span {
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--text-muted);
+}
+
+.contact-field input,
+.contact-field textarea {
+  width: 100%;
+  padding: 0.75rem 0.9rem;
+  border-radius: 10px;
+  border: 1px solid var(--glass-border);
+  background: rgba(2, 6, 23, 0.55);
+  color: var(--text);
+  font: inherit;
+  font-size: 0.92rem;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  resize: vertical;
+}
+
+.contact-field input::placeholder,
+.contact-field textarea::placeholder {
+  color: rgba(148, 163, 184, 0.65);
+}
+
+.contact-field input:focus,
+.contact-field textarea:focus {
+  outline: none;
+  border-color: rgba(139, 92, 246, 0.55);
+  box-shadow: 0 0 0 3px rgba(124, 58, 237, 0.15);
+}
+
+.contact-field input:disabled,
+.contact-field textarea:disabled {
+  opacity: 0.65;
+  cursor: not-allowed;
+}
+
+.contact-submit {
+  align-self: flex-start;
+  margin-top: 0.25rem;
+}
+
+.contact-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.contact-form-feedback {
+  font-size: 0.88rem;
+  margin-top: 0.25rem;
+}
+
+.contact-form-success {
+  color: #34d399;
+}
+
+.contact-form-error {
+  color: #f87171;
+}
+
 .contact-cards {
   display: grid;
   grid-template-columns: repeat(3, 1fr);

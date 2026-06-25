@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion';
 import { profile } from '../data/portfolio';
+import ContactForm from './ContactForm';
 
 const links = [
   {
@@ -36,6 +37,8 @@ export default function Contact() {
         <br />
         <span>Let&apos;s build it together.</span>
       </motion.h2>
+
+      <ContactForm />
 
       <div className="contact-cards">
         {links.map((link, i) => (
