@@ -75,10 +75,6 @@ export default function ContactForm() {
       <div className="contact-form-panel">
         <p className="contact-form-eyebrow">Send a message</p>
         <h3 className="contact-form-title">Get in touch</h3>
-        <p className="contact-form-sub">
-          Open to full-time and internship roles in Applied AI, full-stack development, and automation.
-          Recruiters and hiring managers — send a message and I&apos;ll get back to you within 24–48 hours.
-        </p>
 
         <form className="contact-form" onSubmit={handleSubmit}>
           <input type="checkbox" name="botcheck" className="contact-honeypot" tabIndex={-1} autoComplete="off" />
